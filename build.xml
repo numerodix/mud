@@ -1,0 +1,56 @@
+<project name="mud" default="compile" basedir=".">
+
+	<!-- set global properties for this build -->
+	<property name="root" location="."/>
+	
+	<property name="src" location="${root}/src"/>
+	<property name="lib" location="${root}/lib"/>
+	<property name="build" location="${root}/build"/>
+	<property name="pkg" location="${root}/pkg"/>
+	<property name="dist" location="${root}/dist"/>
+	
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="buildnumber" depends="init">
+		<buildnumber file="${build}/build.number"/>
+	</target>
+	
+	<target name="compile" depends="buildnumber"
+				description="compile the source">
+		<javac srcdir="${src}" destdir="${build}"
+			   extdirs="${lib}"
+			   debug="on"
+			   compiler="modern"
+			   source="1.5"
+			   target="1.5"
+		>
+			<compilerarg value="-Xlint:unchecked"/>
+		</javac>
+	</target>
+	
+	<target name="gcj" depends="init"
+			description="compile the source">
+		<javac srcdir="${src}" destdir="${build}"
+			   extdirs="${lib}"
+			   debug="on"
+			   compiler="gcj"
+			   source="1.5"
+			   target="1.5"
+		/>
+	</target>
+	
+	<target name="clean" description="clean up" >
+		<delete 
+				dir="${build}"
+				includeemptydirs="true"
+		>
+			<exclude name="**/build.number"/>
+			<exclude name="**/revision"/>
+		</delete>
+	</target>
+</project>

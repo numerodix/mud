@@ -1,0 +1,10 @@
+grant {
+	// Allow everything for now
+
+permission java.security.AllPermission;
+
+	// or more specific:
+//permission java.net.SocketPermission "localhost:1024-", "accept, connect, listen, resolve";
+//permission java.net.SocketPermission "127.0.0.1:1024-", "accept, connect, listen, resolve";
+//permission java.net.SocketPermission "*:1024-", "accept, connect, listen, resolve";
+};

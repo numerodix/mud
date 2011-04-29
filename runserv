@@ -1,0 +1,17 @@
+#!/bin/sh
+
+executable=mud.server.Server
+
+pkill -f $executable &>/dev/null
+
+cd build
+
+while netstat -lnpt | egrep "rmiregistry"; do
+	pkill rmiregistry 2>&1 >/dev/null 
+	sleep 1
+done
+rmiregistry &
+
+java -cp .:../lib/log4j-1.2.15.jar \
+-Djava.rmi.server.hostname=`hostname` \
+-Djava.security.policy=../policy $executable

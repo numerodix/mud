@@ -1,0 +1,4 @@
+rev=$(git log --oneline | head -n1 | awk '{print $1}')
+mkdir -p build
+echo "revision=$rev" > build/revision
+ant
