@@ -63,7 +63,7 @@ Select a username and password to log into the game:
 
 	>> u Andres secret
 
-This will place the human player Andres in The Lobby:
+This will place the human character Andres in The Lobby:
 
 	>>> Entered The Lobby
 	 Room: The Lobby
