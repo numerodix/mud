@@ -4,7 +4,7 @@ central server and any number of connecting clients.
 # Requirements
 
 mud is written in Java (1.5 generation) and uses RMI (remote method
-invocation) for remote calls.
+invocation) for remote calls. To build it you need ant.
 
 # Compiling
 
